@@ -34,6 +34,9 @@ export default {
   <template v-if="searchFlag">
     <h3>Movies</h3>
     <ul v-for="movie in  state.movies.results ">
+      <li>
+        <img :src="'https://image.tmdb.org/t/p/w92' + movie.poster_path" alt="">
+      </li>
       <li>Titolo: {{ movie.title }}</li>
       <li>Titolo Originale: {{ movie.original_title }}</li>
       <li>Lingua: <span :class="'lang-icon lang-icon-' + movie.original_language"></span>
@@ -42,6 +45,9 @@ export default {
     </ul>
     <h3>Series</h3>
     <ul v-for="show in  state.tvShows.results ">
+      <li>
+        <img :src="'https://image.tmdb.org/t/p/w92' + show.poster_path" alt="">
+      </li>
       <li>Titolo: {{ show.name }}</li>
       <li>Titolo Originale: {{ show.original_name }}</li>
       <li>Lingua: <span :class="'lang-icon lang-icon-' + show.original_language"></span>
