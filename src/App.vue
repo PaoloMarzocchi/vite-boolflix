@@ -29,14 +29,19 @@ export default {
   <input type="text" v-model="searchedMovie" placeholder="Search here">
   <button @click="movieSearch()">Search</button>
   <template v-if="searchFlag">
-    <ul v-for="movie in state.movie.results">
+    <ul v-for="movie in  state.movie.results ">
       <li>Titolo: {{ movie.title }}</li>
       <li>Titolo Originale: {{ movie.original_title }}</li>
-      <li>Lingua: {{ movie.original_language }}</li>
+      <li>Lingua: <span :class="'lang-icon lang-icon-' + movie.original_language"></span>
+      </li>
       <li>Voto: {{ movie.vote_average }}</li>
     </ul>
   </template>
 
 </template>
 
-<style></style>
+<style>
+.lang-icon {
+  background-image: url(../node_modules/@textabledev/langs-flags-list/lang-flags.png);
+}
+</style>
