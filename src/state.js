@@ -9,7 +9,7 @@ export const state = reactive({
         axios
             .get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${name}`)
             .then(response => {
-                response.data.type = 'movies';
+                response.data.type = 'Movies';
                 this.movies = response.data;
 
             })
@@ -20,7 +20,7 @@ export const state = reactive({
         axios
             .get(`https://api.themoviedb.org/3/search/tv?api_key=${key}&query=${name}`)
             .then(response => {
-                response.data.type = 'series';
+                response.data.type = 'Tv Shows';
                 this.tvShows = response.data;
 
             })
