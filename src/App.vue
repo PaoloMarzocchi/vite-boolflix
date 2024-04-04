@@ -9,8 +9,7 @@ export default {
       state,
       searchInput: '',
       searchFlag: false,
-      vote: 0,
-      rest: null,
+
     }
   },
   methods: {
@@ -19,37 +18,13 @@ export default {
       this.state.getMovieDb(this.state.apiKey, this.searchInput);
     },
     convertVote(rate) {
-      this.vote = rate;
-      this.vote = Math.round(this.vote / 2);
-      /* this.vote = (this.vote / 2);
-      this.rest = this.vote - Math.floor(this.vote);
-      console.log(this.vote); */
-
-
-      /*  for (let i = 1; i <= this.vote; i++) {
-         console.log('star');
- 
-       }
- 
-       if (this.rest > 0.75) {
-         console.log('star');
- 
-       } else if (this.rest > 0.25) {
-         console.log('half');
- 
-       }
-       for (let i = this.vote + 1; i < 5; i++) {
-         console.log('empty');
- 
-       }
-  */
-
-
-
+      let vote = rate;
+      vote = Math.round(vote / 2);
+      return vote
     }
   },
   mounted() {
-    //this.convertVote(10)
+
 
   }
 }
@@ -72,10 +47,10 @@ export default {
       <li>Lingua: <span :class="'lang-icon lang-icon-' + movie.original_language"></span>
       </li>
       <li>
-        Voto: {{ convertVote(movie.vote_average) }}
+        Voto:
 
         <template v-for="i in 5">
-          <template v-if="vote >= i">
+          <template v-if="convertVote(movie.vote_average) >= i">
             <i class="fa-solid fa-star" style="color: #e1a014;"></i>
 
           </template>
@@ -84,17 +59,6 @@ export default {
           </template>
 
         </template>
-        <!-- <template v-if="rest > 0.75">
-          <i class="fa-solid fa-star" style="color: #e1a014;"></i>
-
-        </template>
-        <template v-if="rest > 0.25">
-          <i class="fa-solid fa-star-half-stroke" style="color: #e1a014;"></i>
-
-        </template> -->
-        <!-- <template v-for="i = vote in 5">
-          <i class="fa-regular fa-star" style="color: #e1a014;"></i>
-        </template> -->
 
 
       </li>
@@ -112,10 +76,10 @@ export default {
       <li>Titolo Originale: {{ show.original_name }}</li>
       <li>Lingua: <span :class="'lang-icon lang-icon-' + show.original_language"></span>
       </li>
-      <li>Voto: {{ convertVote(show.vote_average) }}
+      <li>Voto:
 
         <template v-for="i in 5">
-          <template v-if="vote >= i">
+          <template v-if="convertVote(show.vote_average) >= i">
             <i class="fa-solid fa-star" style="color: #e1a014;"></i>
 
           </template>
