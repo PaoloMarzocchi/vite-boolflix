@@ -34,7 +34,7 @@ export default {
         <template v-else>
 
           <ShowResults :img="prod.poster_path" :title="key === 'movies' ? prod.title : prod.name"
-            :originTitle="key === 'tvShows' ? prod.original_title : prod.original_name" :lang="prod.original_language"
+            :originTitle="key === 'movies' ? prod.original_title : prod.original_name" :lang="prod.original_language"
             :vote="prod.vote_average" v-for="prod in  media.results">
           </ShowResults>
 
