@@ -3,14 +3,17 @@ import axios from 'axios';
 
 export const state = reactive({
     apiKey: '3a5697af1a00649bd70f3631787fb2c3',
-    movies: {},
-    tvShows: {},
+    medias: {
+        movies: {},
+        tvShows: {},
+    },
+    searchInput: '',
     getMovieDb(key, name) {
         axios
             .get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${name}`)
             .then(response => {
-                response.data.type = 'Movies';
-                this.movies = response.data;
+
+                this.medias.movies = response.data;
 
             })
             .catch(err => {
@@ -20,13 +23,15 @@ export const state = reactive({
         axios
             .get(`https://api.themoviedb.org/3/search/tv?api_key=${key}&query=${name}`)
             .then(response => {
-                response.data.type = 'Tv Shows';
-                this.tvShows = response.data;
+
+                this.medias.tvShows = response.data;
 
             })
             .catch(err => {
                 console.error(err.message)
             })
+
+        console.log(this.medias);
     },
 
 })

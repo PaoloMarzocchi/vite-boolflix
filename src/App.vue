@@ -2,7 +2,7 @@
 import { state } from './state.js';
 import AppHeader from './components/AppHeader.vue';
 import ShowResults from './components/ShowResults.vue';
-import ContainerResults from './components/ContainerResults.vue';
+import AppMain from './components/AppMain.vue';
 
 
 export default {
@@ -10,7 +10,7 @@ export default {
   components: {
     AppHeader,
     ShowResults,
-    ContainerResults,
+    AppMain,
   },
   data() {
     return {
@@ -19,9 +19,11 @@ export default {
     }
   },
   methods: {
-    searchInDB(searchInput) {
+    searchInDB() {
       this.searchFlag = true;
-      state.getMovieDb(state.apiKey, searchInput);
+
+      state.getMovieDb(state.apiKey, state.searchInput);
+
     },
 
   },
@@ -39,24 +41,7 @@ export default {
 
   <template v-if="searchFlag">
 
-    <ContainerResults :type="state.movies.type">
-      <ShowResults :img="movie.poster_path" :title="movie.title" :originTitle="movie.original_title"
-        :lang="movie.original_language" :vote="movie.vote_average" v-for="movie in  state.movies.results">
-      </ShowResults>
-    </ContainerResults>
-
-    <!-- <template v-if="state.movies.results.length === 0">
-  <h4>Movie Not Found!</h4>
-</template> -->
-    <ContainerResults :type="state.tvShows.type">
-      <ShowResults :img="show.poster_path" :title="show.name" :originTitle="show.original_name"
-        :lang="show.original_language" :vote="show.vote_average" v-for="show in  state.tvShows.results">
-      </ShowResults>
-    </ContainerResults>
-
-    <!-- <template v-if="state.tvShows.results.length === 0">
-  <h4>Tv Show Not Found!</h4>
-</template> -->
+    <AppMain></AppMain>
 
   </template>
 
@@ -68,8 +53,10 @@ export default {
 
 /* #region Common */
 :root {
+  --flix--dark: black;
   --flix--primary: #1B1B1B;
   --flix--txt: #E3E4E4;
+  --flix--secondary: #db202c;
 }
 
 * {

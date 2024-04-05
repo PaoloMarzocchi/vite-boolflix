@@ -18,8 +18,9 @@ export default {
       <div class="card">
 
          <!-- Front card -->
-         <div class="poster">
-            <img :src="'https://image.tmdb.org/t/p/w342' + img" alt="poster">
+         <div class="poster d-flex">
+            <img :src="'https://image.tmdb.org/t/p/w342' + img" alt="poster" v-if="img">
+            <img src="/img/img-not-found.jpg" alt="Not Found" v-else>
          </div>
 
          <!-- Back card -->
@@ -71,6 +72,8 @@ export default {
 
       /* Front Card */
       .poster {
+         height: 100%;
+         align-items: center;
 
          & img {
             width: 100%;
@@ -86,8 +89,8 @@ export default {
          position: absolute;
          top: 0;
          left: 0;
-         background-color: black;
-         border: 1px solid red;
+         background-color: var(--flix--dark);
+         border: 1px solid var(--flix--secondary);
          align-items: center;
          padding: 1rem;
 
@@ -112,6 +115,7 @@ export default {
 
    .card:hover .description {
       opacity: 1;
+      transition: opacity 0.3s ease-in-out;
       z-index: 10;
    }
 }

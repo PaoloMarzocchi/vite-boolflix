@@ -1,12 +1,15 @@
 <script>
+import { state } from '../state.js';
+
 export default {
     name: 'AppHeader',
     emits: ['search-input'],
     data() {
         return {
-            searchInput: '',
+            state,
         }
-    }
+    },
+
 }
 </script>
 
@@ -14,11 +17,13 @@ export default {
     <div class="container d-flex" id="site-header">
         <img src="/img/logo.png" alt="" style="width: 10rem;">
         <div class="input-box">
-            <input type="text" id="input" v-model="searchInput" placeholder="Search here"
-                @keyup.enter="$emit('search-input', searchInput)">
-            <button id="btn" @click="$emit('search-input', searchInput)">
+
+            <input type="text" id="input" v-model="state.searchInput" placeholder="Search here"
+                @keyup.enter="$emit('search-input')">
+            <button id="btn" @click="$emit('search-input')">
                 <i class="fa-solid fa-magnifying-glass" style="color: var(--flix--txt);"></i>
             </button>
+
         </div>
 
     </div>
