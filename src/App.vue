@@ -64,6 +64,9 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* #region Common */
 :root {
   --flix--primary: #1B1B1B;
   --flix--txt: #E3E4E4;
@@ -78,12 +81,17 @@ export default {
 body {
   background-color: var(--flix--primary);
   color: var(--flix--txt);
+  font-family: "Roboto", sans-serif;
 }
 
 ul {
   list-style: none;
 }
 
+/* #endregion Common */
+
+
+/* #region Utilities */
 .lang-icon {
   background-image: url(../node_modules/@textabledev/langs-flags-list/lang-flags.png);
 }
@@ -92,11 +100,13 @@ ul {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem
+
 }
 
 .d-flex {
   display: flex;
 
 }
+
+/* #endregion Utilities */
 </style>

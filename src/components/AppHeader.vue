@@ -12,7 +12,7 @@ export default {
 
 <template>
     <div class="container d-flex" id="site-header">
-        <img src="/img/logo.png" alt="" style="width: 7rem;">
+        <img src="/img/logo.png" alt="" style="width: 10rem;">
         <div class="input-box">
             <input type="text" id="input" v-model="searchInput" placeholder="Search here"
                 @keyup.enter="$emit('search-input', searchInput)">
@@ -32,6 +32,10 @@ export default {
     padding: 0.5rem 0;
     justify-content: space-between;
     align-items: center;
+
+    & img {
+        margin-left: -0.3rem;
+    }
 
     #input {
         background-color: #494949;
